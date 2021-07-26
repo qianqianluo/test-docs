@@ -103,7 +103,7 @@ cat > index.html <<EOF
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Homepage Docs</title>
+      <title>Welcome Tigasedocs</title>
    </head>
    <body>
       <p>EN: <a href="/${REPO_NAME}/en/master/">documentation</a></p>

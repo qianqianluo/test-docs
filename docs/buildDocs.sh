@@ -98,7 +98,19 @@ git checkout -b gh-pages
 # that start with an underscore (_), such as our "_content" dir..
 touch .nojekyll
 
-
+# add redirect from the docroot to our default docs language/version
+cat > index.html <<EOF
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>helloWorld Docs</title>
+      <meta http-equiv = "refresh" content="0; url='/${REPO_NAME}/en/master/'" />
+   </head>
+   <body>
+      <p>Please wait while you're redirected to our <a href="/${REPO_NAME}/en/master/">documentation</a>.</p>
+   </body>
+</html>
+EOF
 
 # copy the resulting html pages built from sphinx above to our new git repo
 git add .

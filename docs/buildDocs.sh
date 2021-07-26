@@ -103,11 +103,12 @@ cat > index.html <<EOF
 <!DOCTYPE html>
 <html>
    <head>
-      <title>helloWorld Docs</title>
-      <meta http-equiv = "refresh" content="0; url='/${REPO_NAME}/en/master/'" />
+      <title>Homepage Docs</title>
    </head>
    <body>
-      <p>Please wait while you're redirected to our <a href="/${REPO_NAME}/en/master/">documentation</a>.</p>
+      <p>EN: <a href="/${REPO_NAME}/en/master/">documentation</a></p>
+      <p>PL: <a href="/${REPO_NAME}/pl/master/">documentation</a></p>
+      <p>CN: <a href="/${REPO_NAME}/zh_CN/master/">documentation</a></p>
    </body>
 </html>
 EOF

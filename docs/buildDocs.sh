@@ -238,7 +238,6 @@ cat > index.html <<EOF
 </head>
  
 <body>
-<h1 style = "color:blue;"> Welcome to Tigase Documentation Website</h1>
     <header>
         <nav>
             <div class="logo">
@@ -249,16 +248,16 @@ cat > index.html <<EOF
                     English
                 </div>
                 <ul>
-		     <li>
+                    <li>
                         <a href="/${REPO_NAME}/pl/master/" class="pl">POLISH</a>
                     </li>
-		
                     <li>
                         <a href="/${REPO_NAME}/en/master/" class="en">English</a>
                     </li>
                     <li>
                         <a href="/${REPO_NAME}/zh_CN/master/" class="cn">CHINESE</a>
                     </li>
+                </ul>
                 
             </div>
         </nav>

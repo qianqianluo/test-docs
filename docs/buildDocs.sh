@@ -249,7 +249,7 @@ cat > index.html <<EOF
                     English
                 </div>
                 <ul>
-                    <a href="/${REPO_NAME}/pl/master/" class="pl"><li>POLISH</li></a>
+		    <li class="pl"><a href="/${REPO_NAME}/pl/master/">POLISH</li></a>
 		
                     <li>
                         <a href="/${REPO_NAME}/en/master/" class="en">English</a>

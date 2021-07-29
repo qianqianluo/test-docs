@@ -101,15 +101,44 @@ touch .nojekyll
 # add redirect from the docroot to our default docs language/version
 cat > index.html <<EOF
 <!DOCTYPE html>
-<html>
-   <head>
-      <title>Welcome Tigasedocs</title>
-   </head>
-   <body>
-      <p>EN: <a href="/${REPO_NAME}/en/master/">documentation</a></p>
-      <p>PL: <a href="/${REPO_NAME}/pl/master/">documentation</a></p>
-      <p>CN: <a href="/${REPO_NAME}/zh_CN/master/">documentation</a></p>
-   </body>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tigase documentation main page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+ 
+<body>
+<h1 style = "color:blue;"> Welcome to Tigase Documentation Website</h1>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#"><img src="logo.png" alt=""></a>
+            </div> 
+            <div class="lang-menu">
+                <div class="selected-lang">
+                    English
+                </div>
+                <ul>
+                    <li>
+                        <a href="/${REPO_NAME}/pl/master/" class="pl">POLISH</a>
+                    </li>
+                    <li>
+                        <a href="/${REPO_NAME}/en/master/" class="en">English</a>
+                    </li>
+                    <li>
+                        <a href="/${REPO_NAME}/zh_CN/master/" class="cn">CHINESE</a>
+                    </li>
+                </ul>
+                
+            </div>
+        </nav>
+    </header>
+
+</body>
+
 </html>
 EOF
 

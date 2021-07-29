@@ -249,16 +249,15 @@ cat > index.html <<EOF
                     English
                 </div>
                 <ul>
-                    <li class="pl">
-                        <a href="/${REPO_NAME}/pl/master/"> POLISH</a>
+                    <li>
+                        <a href="/${REPO_NAME}/pl/master/" class="pl">POLISH</a>
                     </li>
-                    <li class="en">
-                        <a href="/${REPO_NAME}/en/master/"> English</a>
+                    <li>
+                        <a href="/${REPO_NAME}/en/master/" class="en">English</a>
                     </li>
-                    <li class="cn">
-                        <a href="/${REPO_NAME}/zh_CN/master/"> CHINESE</a>
+                    <li>
+                        <a href="/${REPO_NAME}/zh_CN/master/" class="cn">CHINESE</a>
                     </li>
-                </ul>
                 
             </div>
         </nav>

@@ -210,7 +210,7 @@ cat > index.html <<EOF
                         <a href="https://qianqianluo.g7/29/2021ithub.io/test-docs/pl/master/" class="pl">POLISH</a>
                     </li>
                     <li>
-                        <a href="https://qianqianluo.github.io/test-docs/en/master/" class="en">English</a>
+                        <a href="https://qianqianluo.github.io/test-docs/en/master/" class="en">ENGLISH</a>
                     </li>
                     <li>
                         <a href="https://qianqianluo.github.io/test-docs/zh_CN/master/" class="cn">CHINESE</a>

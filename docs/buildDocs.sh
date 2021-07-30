@@ -182,7 +182,7 @@ cat > index.html <<EOF
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tigase documentation main page</title>
-    <link rel="stylesheet" href="./Tigase documentation main page_files/style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
  
 <body>

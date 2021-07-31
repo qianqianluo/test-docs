@@ -49,6 +49,7 @@ templates_path = ['_templates']
 exclude_patterns = []
 
 
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -115,7 +116,7 @@ html_context['version'] = current_version
 # POPULATE LINKS TO OTHER LANGUAGES
 html_context['languages'] = [ ('en', '/' +REPO_NAME+ '/en/' +current_version+ '/') ]
  
-languages = [lang.name for lang in os.scandir('locales') if lang.is_dir()]
+languages = [lang.name for lang in os.scandir('locale') if lang.is_dir()]
 for lang in languages:
    html_context['languages'].append( (lang, '/' +REPO_NAME+ '/' +lang+ '/' +current_version+ '/') )
  
@@ -128,14 +129,7 @@ for version in versions:
  
 # POPULATE LINKS TO OTHER FORMATS/DOWNLOADS
  
-# settings for creating PDF with rinoh
-rinoh_documents = [(
- master_doc,
- 'target',
- project+ ' Documentation',
- '© ' +copyright,
-)]
-today_fmt = "%B %d, %Y"
+
  
 # settings for EPUB
 epub_basename = 'target'

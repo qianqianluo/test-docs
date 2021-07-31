@@ -96,8 +96,7 @@ else:
 # tell the theme which language to we're currently building
 html_context['current_language'] = current_language
 
-#include _templates
-template_path = ["_templates"]
+
  
 # SET CURRENT_VERSION
 from git import Repo

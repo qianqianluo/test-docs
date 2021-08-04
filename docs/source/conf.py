@@ -47,7 +47,10 @@ templates_path = ['_templates']
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
-
+source_suffix = '.rst'
+# This is also used if you do content translation via gettext catalogs.
+# Usually you set "language" from the command line for these cases.
+language = None
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -64,8 +67,8 @@ html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
 
-locale_dirs = ['locale/']   # path is example but recommended.
-gettext_compact = False     # optional.
+# locale_dirs = ['locale/']   # path is example but recommended.
+# gettext_compact = False     # optional.
 
 import sys, os
 sys.path.insert(0, os.path.abspath('../source'))

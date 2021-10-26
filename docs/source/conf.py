@@ -70,3 +70,6 @@ language = "zh_CN"
 locale_dirs = ["locale/"]
 
 
+gettext_compact = False 
+language = "pl"
+locale_dirs = ["locale/"]

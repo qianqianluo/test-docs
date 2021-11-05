@@ -19,5 +19,5 @@ msgstr ""
 
 #: ../../source/XMLTOOLS/master.rst:3
 msgid "Tigase XML Tools- Version 4.2.0"
-msgstr ""
+msgstr "版本"
 

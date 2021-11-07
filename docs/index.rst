@@ -15,7 +15,7 @@ SISKIN-IM
 TIGASE-ACS
 -----------
 .. toctree::
-   titlesonly:
+   :maxdepth: 0
 
    ACS/master
 

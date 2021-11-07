@@ -64,7 +64,7 @@ source_suffix = '.rst'
 # The master toctree document.
 master_doc = 'index'
 
-html_theme_options = {collapse_navigation': True,
+html_theme_options = {'collapse_navigation': True,
     'sticky_navigation': True,
     'navigation_depth': 4,
     'includehidden': True,

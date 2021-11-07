@@ -1,4 +1,7 @@
-:raw-html:`<h1>Tigase Advanced Clustering Strategy (ACS)--Version 3.2.0</h1>`
+
+===========================================================
+Tigase Advanced Clustering Strategy (ACS)--Version 3.2.0
+===========================================================
 
 1. Design and implementation
 ============================

@@ -12,12 +12,8 @@ SISKIN-IM
 
    SISKIN-IM/master
 
-TIGASE-ACS
------------
-.. toctree::
-   :maxdepth: 0
+.. include:: ACS.rst
 
-   ACS/master
 
 
 TIGASE-AUDITLOG

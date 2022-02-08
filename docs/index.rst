@@ -10,7 +10,7 @@ SISKIN-IM
 .. toctree::
    :maxdepth: 0
 
-   SISKIN-IM/master
+   ACS/master
 
 
 

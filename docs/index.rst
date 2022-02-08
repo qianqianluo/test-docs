@@ -12,7 +12,6 @@ SISKIN-IM
 
    SISKIN-IM/master
 
-.. include:: ACS.rst
 
 
 

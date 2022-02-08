@@ -1,6 +1,6 @@
 
 ===========================================================
-Tigase Advanced Clustering Strategy (ACS)--Version 3.2.0
+Tigase Advanced Clustering Strategy (ACS)--Version 3.5.0
 ===========================================================
 
 1. Design and implementation

@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="pl" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="pl" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Zaawansowana Strategia Klastrowania Tigase (ACS)–wersja 3.2.0 &mdash; TigaseDoc 0.1 - dokumentacja</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Indeks" href="../genindex.html" />
+    <link rel="search" title="Szukaj" href="../search.html" />
+    <link rel="next" title="Tigase AuditLog Component -Version 2.2.0" href="../AUDITLOG/master.html" />
+    <link rel="prev" title="Tigase Messenger for iOS – Version V1.0" href="../SISKIN-IM/master.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TigaseDoc
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../SISKIN-IM/master.html">Tigase Messenger for iOS – Version V1.0</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Zaawansowana Strategia Klastrowania Tigase (ACS)–wersja 3.2.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#design-and-implementation">1. Projektowanie i wdrażanie</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#acs">1.1. ACS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#design">1.2. Projektowanie</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tigase-acs-sm-installation">2. Instalacja Tigase ACS SM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tigase-acs-sm-configuration">3. Konfiguracja Tigase ACS SM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-components">4. Obsługiwane elementy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tigase-advanced-clustering-strategy-for-multi-user-chat-acs-muc">4.1. Zaawansowana strategia klastrowania Tigase dla czatu z wieloma użytkownikami (ACS-MUC)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">4.1.1. Przegląd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tigase-acs-muc-configuration">4.1.2. Konfiguracja Tigase ACS MUC</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AUDITLOG/master.html">Tigase AuditLog Component -Version 2.2.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../DATABASE-MIGRATOR/master.html">Tigase Database Migrator - Version 1.1.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HTTP-API/master.html">Tigase HTTP API - Version 2.2.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../IOS/master.html">Tigase Messenger for iOS</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../IOT-DOCUMENTATION/master.html">Tigase IoT Documentation - Version 1.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../JAXMPP/master.html">Tigase JaXMPP</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MESSAGE-ARCHIVING/master.html">Tigase Message Archiving Component - Version 3.0.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MIX/master.html">Tigase MIX Component - Version 1.0.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MONGODB/master.html">Tigase MongoDB 2.2.0-SNAPSHOT API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MUC/master.html">Tigase MUC Component - Version 3.2.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PUBSUB/master.html">Tigase PubSub Component–Version 5.0.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PUSH/master.html">Tigase Push Component - Version 1.2.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SERVER/master.html">Tigase Administration Guide - Version 8.2.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SOCKS5/master.html">Tigase Socks5 Proxy-Version 2.1.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SPAM/master.html">Tigase SPAM Filter-Version 2.2.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SWIFT/master.html">TigaseSwift Development Guide-Version 1.0.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TTS-NG/master.html">Tigase TTS-NG -Version 1.1.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../UNIFIED-ARCHIVE/master.html">Tigase Unified Archive Component-Version 3.0.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../UTILS/master.html">Tigase Utils 4.2.0-SNAPSHOT API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WORKGROUP-QUEUES/master.html">Tigase Workgroup Queues Component (XEP-0142)- Version 1.2.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../XMLTOOLS/master.html">Tigase XML Tools- Version 4.2.0</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TigaseDoc</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Zaawansowana Strategia Klastrowania Tigase (ACS)–wersja 3.2.0</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ACS/master.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="tigase-advanced-clustering-strategy-acs-version-3-2-0">
+<h1>Zaawansowana Strategia Klastrowania Tigase (ACS)–wersja 3.2.0<a class="headerlink" href="#tigase-advanced-clustering-strategy-acs-version-3-2-0" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<section id="design-and-implementation">
+<h2>1. Projektowanie i wdrażanie<a class="headerlink" href="#design-and-implementation" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<section id="acs">
+<h3>1.1. ACS<a class="headerlink" href="#acs" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>ACS jest naszą ogólną, komercyjną strategią klastrowania zaprojektowaną dla mniej lub bardziej typowych instalacji XMPP, łatwo skalującą się do milionów i więcej użytkowników online bez limitu węzłów klastra. Testy obciążeniowe, które przeprowadziliśmy nad kodem obejmowały bazę danych użytkowników z 100 milionami kont i średnim rozmiarem rosteru do 150, ale to nie jest limit.</p>
+</section>
+<section id="design">
+<h3>1.2. Projektowanie<a class="headerlink" href="#design" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Strategia klastrowania oparta jest na wymianie informacji pomiędzy węzłami klastra o użytkownikach online. Kto jest online i gdzie użytkownik jest podłączony. Komunikacja pomiędzy węzłami klastra jest przetwarzana z najwyższym priorytetem, aby zapewnić minimalne opóźnienia w populacji danych o użytkownikach online. Wydajny mechanizm synchronizacji pozwala na minimalizację ruchu pomiędzy węzłami klastra i dystrybucję dokładnych danych o łączących się i rozłączających użytkownikach.</p>
+</section>
+</section>
+<section id="tigase-acs-sm-installation">
+<h2>2. Instalacja Tigase ACS SM<a class="headerlink" href="#tigase-acs-sm-installation" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Komponent Tigase ACS SM jest domyślnie dostarczany z wersją Tigase XMPP Server (&#64;-dist-max&#64; smak archiwum), więc wystarczy go włączyć w konfiguracji. Można go również uzyskać z pakietu dystrybucyjnego tigase-acs.</p>
+<p>Po pobraniu archiwum wystarczy je rozpakować i skopiować zawartość katalogu jars/ z rozpakowanego archiwum do katalogu jars/ w katalogu instalacyjnym tigase-server/, np. w systemach �nix (zakładając, że archiwum zostało pobrane do głównego katalogu Tigase Server):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar -xf tigase-acs-<span class="si">${</span><span class="nv">version</span><span class="si">}</span>.tar.gz
+cp -R tigase-acs-<span class="si">${</span><span class="nv">version</span><span class="si">}</span>/jars/ tigase-server/jars/
+</pre></div>
+</div>
+</section>
+<section id="tigase-acs-sm-configuration">
+<h2>3. Konfiguracja Tigase ACS SM<a class="headerlink" href="#tigase-acs-sm-configuration" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Aby móc korzystać z zaawansowanej strategii klastrowania, należy najpierw włączyć tryb klastrowania:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;cluster-mode&#39;</span> <span class="o">=</span> <span class="nb">true</span>
+</pre></div>
+</div>
+<p>a następnie należy włączyć strategię ACS:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;sess-man&#39;</span> <span class="o">{</span>
+ strategy <span class="o">(</span>class: tigase.server.cluster.strategy.OnlineUsersCachingStrategy<span class="o">)</span> <span class="o">{}</span>
+ <span class="o">}</span>
+</pre></div>
+</div>
+</section>
+<section id="supported-components">
+<h2>4. Obsługiwane elementy<a class="headerlink" href="#supported-components" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<section id="tigase-advanced-clustering-strategy-for-multi-user-chat-acs-muc">
+<h3>4.1. Zaawansowana strategia klastrowania Tigase dla czatu z wieloma użytkownikami (ACS-MUC)<a class="headerlink" href="#tigase-advanced-clustering-strategy-for-multi-user-chat-acs-muc" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<section id="overview">
+<h4>4.1.1. Przegląd<a class="headerlink" href="#overview" title="Stały odnośnik do tego nagłówka">¶</a></h4>
+<p>ACS dla MUC pozwala na bezproblemowe klastrowanie pomieszczeń MUC w ramach instalacji klastra serwerów Tigase XMPP. ACS dla MUC jest wymagany dla klastrowanych wdrożeń MUC. Oferuje różne strategie obsługi dystrybucji ruchu i pomieszczeń w klastrze, co pozwala na precyzyjne dostosowanie konfiguracji wdrożenia do indywidualnych potrzeb.</p>
+</section>
+<section id="tigase-acs-muc-configuration">
+<h4>4.1.2. Konfiguracja Tigase ACS MUC<a class="headerlink" href="#tigase-acs-muc-configuration" title="Stały odnośnik do tego nagłówka">¶</a></h4>
+<p>W celu użycia ACS dla MUC, wymagana jest główna Advance Clustering Strategy. Po jej włączeniu, klastrowana wersja komponentu MUC będzie domyślnie wybierana podczas uruchamiania, dlatego nie jest wymagane jej jawne konfigurowanie (upewnij się, że nie jest skonfigurowana żadna klasa).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>muc <span class="o">()</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<p>Możliwe jest również jawne skonfigurowanie klasy za pomocą następującej konfiguracji:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>muc <span class="o">(</span>class: tigase.muc.cluster.MUCComponentClustered<span class="o">)</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<p>Przy powyższej konfiguracji zostanie użyta domyślna strategia klastrowania MUC. W celu wybrania innej strategii należy skonfigurować klasę w Strategy Bean wewnątrz komponentu muc component bean:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>muc <span class="o">()</span> <span class="o">{</span>
+  strategy <span class="o">(</span>class: tigase.muc.cluster.ShardingStrategy<span class="o">)</span> <span class="o">{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../AUDITLOG/master.html" class="btn btn-neutral float-right" title="Tigase AuditLog Component -Version 2.2.0" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../SISKIN-IM/master.html" class="btn btn-neutral float-left" title="Tigase Messenger for iOS – Version V1.0" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qian Luo
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+ 
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

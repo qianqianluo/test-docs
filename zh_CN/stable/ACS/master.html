@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tigase Advanced Clustering Strategy (ACS)–Version 3.5.0-test &mdash; TigaseDoc 0.1 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Tigase AuditLog Component -Version 2.2.0" href="../AUDITLOG/master.html" />
+    <link rel="prev" title="欢迎阅读Tigase文档" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TigaseDoc
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tigase Advanced Clustering Strategy (ACS)–Version 3.5.0-test</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#design-and-implementation">1.设计和实施</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#acs">1.1.ACS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#design">1.2.设计</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tigase-acs-sm-installation">2.Tigase ACS SM安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tigase-acs-sm-configuration">3.Tigase ACS SM配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-components">4.支持的组件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tigase-advanced-clustering-strategy-for-multi-user-chat-acs-muc">4.1.Tigase多用户聊天高级集群策略（ACS-MUC）。</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">4.1.1.概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tigase-acs-muc-configuration">4.1.2.Tigase ACS MUC配置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AUDITLOG/master.html">Tigase AuditLog Component -Version 2.2.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../DATABASE-MIGRATOR/master.html">Tigase Database Migrator - Version 1.1.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HTTP-API/master.html">Tigase HTTP API - Version 2.2.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../IOS/master.html">Tigase Messenger for iOS</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../IOT-DOCUMENTATION/master.html">Tigase IoT Documentation - Version 1.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../JAXMPP/master.html">Tigase JaXMPP</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MESSAGE-ARCHIVING/master.html">Tigase Message Archiving Component - Version 3.0.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MIX/master.html">Tigase MIX Component - Version 1.0.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MONGODB/master.html">Tigase MongoDB 2.2.0-SNAPSHOT API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MUC/master.html">Tigase MUC Component - Version 3.2.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PUBSUB/master.html">Tigase PubSub Component–Version 5.0.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PUSH/master.html">Tigase Push Component - Version 1.2.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SERVER/master.html">Tigase Administration Guide - Version 8.2.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SOCKS5/master.html">Tigase Socks5 Proxy-Version 2.1.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SPAM/master.html">Tigase SPAM Filter-Version 2.2.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SWIFT/master.html">TigaseSwift Development Guide-Version 1.0.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TTS-NG/master.html">Tigase TTS-NG -Version 1.1.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../UNIFIED-ARCHIVE/master.html">Tigase Unified Archive Component-Version 3.0.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../UTILS/master.html">Tigase Utils 4.2.0-SNAPSHOT API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WORKGROUP-QUEUES/master.html">Tigase Workgroup Queues Component (XEP-0142)- Version 1.2.0</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../XMLTOOLS/master.html">版本</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TigaseDoc</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Tigase Advanced Clustering Strategy (ACS)–Version 3.5.0-test</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/ACS/master.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="tigase-advanced-clustering-strategy-acs-version-3-5-0-test">
+<h1>Tigase Advanced Clustering Strategy (ACS)–Version 3.5.0-test<a class="headerlink" href="#tigase-advanced-clustering-strategy-acs-version-3-5-0-test" title="永久链接至标题">¶</a></h1>
+<section id="design-and-implementation">
+<h2>1.设计和实施<a class="headerlink" href="#design-and-implementation" title="永久链接至标题">¶</a></h2>
+<section id="acs">
+<h3>1.1.ACS<a class="headerlink" href="#acs" title="永久链接至标题">¶</a></h3>
+<p>ACS是我们通用的、商业化的集群策略，主要为典型的XMPP安装而设计，可以轻松地扩展到数百万甚至更多的在线用户，对集群节点没有限制。我们对代码进行的负载测试包括一个有100百万个账户的用户数据库和一个高达150人的平均名册，但这不是极限。</p>
+</section>
+<section id="design">
+<h3>1.2.设计<a class="headerlink" href="#design" title="永久链接至标题">¶</a></h3>
+<p>集群策略是基于集群节点之间共享有关在线用户的信息。谁是在线的，用户在哪里连接。集群节点之间的通信是以最高优先级处理的，以确保在线用户数据的最小延迟。一个有效的同步机制允许集群节点之间的流量最小，并分发关于连接和断开用户的准确数据。</p>
+</section>
+</section>
+<section id="tigase-acs-sm-installation">
+<h2>2.Tigase ACS SM安装<a class="headerlink" href="#tigase-acs-sm-installation" title="永久链接至标题">¶</a></h2>
+<p>Tigase ACS SM组件默认与Tigase XMPP服务器版本（&#64;-dist-max&#64;风味的存档）一起提供，所以在配置中启用它就可以了。它也可以从tigase-acs发行包中获得。</p>
+<p>下载存档后，只需将其解压，并将解压后的存档的jars/目录的内容复制到tigase-server/安装目录下的jars/目录，例如，在*nix系统下（假设存档被下载到Tigase服务器主目录）。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar -xf tigase-acs-<span class="si">${</span><span class="nv">version</span><span class="si">}</span>.tar.gz
+cp -R tigase-acs-<span class="si">${</span><span class="nv">version</span><span class="si">}</span>/jars/ tigase-server/jars/
+</pre></div>
+</div>
+</section>
+<section id="tigase-acs-sm-configuration">
+<h2>3.Tigase ACS SM配置<a class="headerlink" href="#tigase-acs-sm-configuration" title="永久链接至标题">¶</a></h2>
+<p>为了使用高级集群策略，首先需要打开集群模式。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;cluster-mode&#39;</span> <span class="o">=</span> <span class="nb">true</span>
+</pre></div>
+</div>
+<p>然后需要启用一个ACS策略。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;sess-man&#39;</span> <span class="o">{</span>
+ strategy <span class="o">(</span>class: tigase.server.cluster.strategy.OnlineUsersCachingStrategy<span class="o">)</span> <span class="o">{}</span>
+ <span class="o">}</span>
+</pre></div>
+</div>
+</section>
+<section id="supported-components">
+<h2>4.支持的组件<a class="headerlink" href="#supported-components" title="永久链接至标题">¶</a></h2>
+<section id="tigase-advanced-clustering-strategy-for-multi-user-chat-acs-muc">
+<h3>4.1.Tigase多用户聊天高级集群策略（ACS-MUC）。<a class="headerlink" href="#tigase-advanced-clustering-strategy-for-multi-user-chat-acs-muc" title="永久链接至标题">¶</a></h3>
+<section id="overview">
+<h4>4.1.1.概述<a class="headerlink" href="#overview" title="永久链接至标题">¶</a></h4>
+<p>ACS for MUC允许MUC机房在Tigase XMPP服务器集群安装中的无缝集群。ACS for MUC是集群式MUC部署的必要条件。它提供了各种策略来处理流量和房间在集群中的分布，从而可以根据个人需求对部署进行微调。</p>
+</section>
+<section id="tigase-acs-muc-configuration">
+<h4>4.1.2.Tigase ACS MUC配置<a class="headerlink" href="#tigase-acs-muc-configuration" title="永久链接至标题">¶</a></h4>
+<p>为了对MUC使用ACS，需要主要的高级集群策略。一旦它被启用，MUC组件的集群版本将在启动时被默认选择，因此不需要明确配置它（确保没有配置类）。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>muc <span class="o">()</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<p>也可以通过以下配置明确配置类：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>muc <span class="o">(</span>class: tigase.muc.cluster.MUCComponentClustered<span class="o">)</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<p>在上述配置下，将使用默认的MUC集群策略。为了选择不同的策略，你必须在MUC组件豆中的策略豆中配置它/她的类。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>muc <span class="o">()</span> <span class="o">{</span>
+  strategy <span class="o">(</span>class: tigase.muc.cluster.ShardingStrategy<span class="o">)</span> <span class="o">{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../AUDITLOG/master.html" class="btn btn-neutral float-right" title="Tigase AuditLog Component -Version 2.2.0" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="欢迎阅读Tigase文档" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qian Luo
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+ 
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
